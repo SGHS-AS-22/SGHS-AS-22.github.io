@@ -1,0 +1,563 @@
+<html>
+	<head>
+		<title> Farming Idle Game </title>
+		<link rel="icon" href=""> 
+		<link rel="stylesheet" type="text/css" href="farming_css.css">
+		
+		<meta charset="UTF-8">
+		<meta name ="description" content="Farming Idle Game Website">
+		<meta name="keywords" content="Idle Game, Farming, Farming Idle Game, Game, Fun">
+		<meta name="author" content="Anna Scott">
+	</head>
+
+	<body>
+	
+		<div id="picture">
+		<img id="farming_image" src="pictures/farm/w.png">
+		</div>
+		
+		<div id="text_body">
+			<div id="current_stats_left">
+				<h1> CURRENT STATS </h1>
+				<h2> Current amount of money: </h2>
+				<p id="current_money"> $0 </p>
+				<h2> Current crops: </h2>
+				<p id="wheat_count"> You have 0 wheat. </p>
+				<p id="lettuce_count"> You have 0 lettuce. </p>
+				<p id ="tomato_count"> You have 0 tomatoes. </p>
+				<p id = "carrot_count"> You have 0 carrots. </p>
+				<p id = "potato_count"> You have 0 potatoes. </p>
+				<h2 id="sell_crops"> Sell crops for money </h2>
+			</div>
+		
+		<div id="gap_one">
+		</div>
+			
+		<div id="crop_icons">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<img id="wheat_icon" src="pictures/icons/wheat_icon.png">
+			<br>
+			<br>
+			<br>
+			<br>
+			<img id="lettuce_icon" src="pictures/icons/lettuce_icon.png">
+			<br>
+			<br>
+			<br>
+			<br>
+			<img id="tomato_icon" src="pictures/icons/tomato_icon.png">
+			<br>
+			<br>
+			<br>
+			<br>
+			<img id="carrot_icon" src="pictures/icons/carrot_icon.png">
+			<br>
+			<br>
+			<br>
+			<br>
+			<img id="potato_icon" src="pictures/icons/potato_icon.png">
+		</div>
+				
+				
+		<div id="upgrades_middle">
+				<h1> UPGRADES </h1>
+				<h2 id="produce_wheat"> Produce wheat </h2>
+				<h3 id="auto_wheat"> Unlock wheat harvester: $500 </h3>
+				<h2 id ="produce_lettuce"> Unlock lettuce: $1000 </h2>
+				<h3 id="auto_lettuce"> Unlock lettuce harvester: $2000 </h3>
+				<h2 id ="produce_tomatoes"> Unlock tomatoes: $2500 </h2>
+				<h3 id="auto_tomato"> Unlock tomato harvester: $4000 </h3>
+				<h2 id ="produce_carrots"> Unlock carrots: $4500 </h2>
+				<h3 id="auto_carrot"> Unlock carrot harvester: $6500 </h3>
+				<h2 id ="produce_potatoes"> Unlock potatoes: $7000 </h2>
+				<h3 id="auto_potato"> Unlock potato harvester: $9500 </h3>
+		</div>
+			
+		<div id="gap_two">
+		</div>
+		
+		<div id="powerup_icons">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<img id="fertiliser_icon" src="pictures/icons/fertiliser_icon.png">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<img id="compost_icon" src="pictures/icons/compost_icon.png">
+		</div>
+			
+		<div id="powerups_right">
+				<h1> POWER UPS </h1>
+				<h2 id="use_fertiliser"> Use fertiliser: $500 </h2>
+				<h3> Give yourself a mega boost in crop production for a limited amount of time. </h3>
+				<h2 id="use_compost"> Use compost: $200 </h2>
+				<h3> Slowly start producing more crops per second/click. </h3>
+				<h3 id="compost_lvl"> Compost level: 0 </h3>
+		</div>
+	</div>
+		
+	
+	</body>
+	
+	<script>
+	
+		var wheat = 0;
+		var lettuce = 0;
+		var tomatoes = 0;
+		var carrots = 0;
+		var potatoes = 0;
+		
+		var unlockedLettuce = false;
+		var unlockedTomatoes = false;
+		var unlockedCarrots = false;
+		var unlockedPotatoes = false;
+		
+		var unlockedAutoWheat = false;
+		var unlockedAutoLettuce = false;
+		var unlockedAutoTomato = false;
+		var unlockedAutoCarrot = false;
+		var unlockedAutoPotato = false;
+		
+		var unlockedFertiliser = false;
+		var unlockedCompost = false;
+		var fertiliserStartTime = 0;
+		
+		var money = 0;
+		var fertiliser = 0;
+		var compost = 0;
+		var compost_level = 0;
+		
+		var wheat_harvesting = 0;
+		var lettuce_harvesting = 0;
+		var tomato_harvesting = 0;
+		var carrot_harvesting = 0;
+		var potato_harvesting = 0;
+		
+		let m = Math.round(money);
+		
+		// Event Listeners for Wheat Producing
+		document.getElementById("produce_wheat").addEventListener("click", pushWheat);
+		
+		//Event Listeners for Lettuce Producing
+		document.getElementById("produce_lettuce").addEventListener("click", pushLettuce);
+		
+		//Event Listeners for Tomato Producing
+		document.getElementById("produce_tomatoes").addEventListener("click", pushTomato);
+		
+		//Event Listeners for Carrot Producing
+		document.getElementById("produce_carrots").addEventListener("click", pushCarrot);
+		
+		//Event Listeners for Potato Producing
+		document.getElementById("produce_potatoes").addEventListener("click", pushPotato);
+		
+		//Event Listeners for Selling Crops
+		document.getElementById("sell_crops").addEventListener("click", pushSell);
+		
+		//Event Listeners for Upgrades & Harvesters
+		document.getElementById("use_fertiliser").addEventListener("click", useFertiliser);
+		
+		document.getElementById("use_compost").addEventListener("click", useCompost);
+		
+		document.getElementById("auto_wheat").addEventListener("click", automateWheat);
+		
+		document.getElementById("auto_lettuce").addEventListener("click", automateLettuce);
+		
+		document.getElementById("auto_tomato").addEventListener("click", automateTomato);
+		
+		document.getElementById("auto_carrot").addEventListener("click", automateCarrot);
+		
+		document.getElementById("auto_potato").addEventListener("click", automatePotato);
+		
+		
+		
+		function pushWheat (){
+			wheat = wheat + 1 + 2*fertiliser + 1.5*compost;
+			updateScreen();
+			}
+		
+		function pushLettuce (){
+			if (unlockedLettuce){
+				lettuce = lettuce + 1 + 2.5*fertiliser + 1.5*compost;
+				updateScreen();
+			} else{
+				if (money >= 1000){
+					money = money - 1000;
+					unlockedLettuce = true;
+					updateScreen();
+				}
+			}
+		}
+		
+		function pushTomato (){
+			if (unlockedTomatoes){
+				tomatoes = tomatoes + 1 + 3*fertiliser + 1.5*compost;
+				updateScreen();
+			} else{
+				if (money >= 2500){
+					money = money - 2500;
+					unlockedTomatoes = true;
+					updateScreen();
+				}
+			}
+		}
+		
+		function pushCarrot (){
+			if (unlockedCarrots){
+				carrots = carrots + 1 + 3.5*fertiliser + 1.5*compost;
+				updateScreen();
+			} else{
+				if (money >= 4500){
+					money = money - 4500;
+					unlockedCarrots = true;
+					updateScreen();
+				}
+			}
+		}
+		
+		function pushPotato (){
+			if (unlockedPotatoes){
+				potatoes = potatoes + 1 + 4*fertiliser + 1.5*compost;
+				updateScreen();
+			} else{
+				if (money >= 7000){
+					money = money - 7000;
+					unlockedPotatoes = true;
+					updateScreen();
+				}
+			}
+		}
+			
+		
+		function pushSell (){
+			money = money + wheat*0.5 + lettuce*1 + tomatoes*1.5 + carrots*2 + potatoes*2.5;
+			wheat = 0;
+			lettuce = 0;
+			tomatoes = 0;
+			carrots = 0;
+			potatoes = 0;
+			updateScreen();
+		}
+		
+		
+		function automateWheat (){
+			if (unlockedAutoWheat){
+				if (money >= 500) {
+					money = money - 500;
+					wheat_harvesting = wheat_harvesting + 1;
+					}
+					updateScreen();
+			} else{
+				if (money >= 500) {
+				money = money - 500;
+				unlockedAutoWheat = true;
+				wheat_harvesting = wheat_harvesting + 1
+				updateScreen ();
+				}
+			}
+		}
+		
+		function automateLettuce (){
+			if (unlockedAutoLettuce){
+				if (money >= 2000) {
+					money = money - 2000;
+					lettuce_harvesting = lettuce_harvesting + 1;
+					}
+					updateScreen();
+			} else{
+				if (money >= 2000) {
+				money = money - 2000;
+				unlockedAutoLettuce = true;
+				lettuce_harvesting = lettuce_harvesting + 1
+				updateScreen ();
+				}
+			}
+		}
+		
+		function automateTomato (){
+			if (unlockedAutoTomato){
+				if (money >= 4000) {
+					money = money - 4000;
+					tomato_harvesting = tomato_harvesting + 1;
+					}
+					updateScreen();
+			} else{
+				if (money >= 4000) {
+				money = money - 4000;
+				unlockedAutoTomato = true;
+				tomato_harvesting = tomato_harvesting + 1
+				updateScreen ();
+				}
+			}
+		}
+		
+		function automateCarrot (){
+			if (unlockedAutoCarrot){
+				if (money >= 6500) {
+					money = money - 6500;
+					carrot_harvesting = carrot_harvesting + 1;
+					}
+					updateScreen();
+			} else{
+				if (money >= 6500) {
+				money = money - 6500;
+				unlockedAutoCarrot = true;
+				carrot_harvesting = carrot_harvesting + 1;
+				updateScreen ();
+				}
+			}
+		}
+		
+		function automatePotato (){
+			if (unlockedAutoPotato){
+				if (money >= 9500) {
+					money = money - 9500;
+					potato_harvesting = potato_harvesting + 1;
+					}
+					updateScreen();
+			} else{
+				if (money >= 9500) {
+				money = money - 9500;
+				unlockedAutoPotato = true;
+				potato_harvesting = potato_harvesting + 1;
+				updateScreen ();
+				}
+			}
+		}
+		
+		setInterval (function() {
+			date = new Date( ); // get date
+			timeNow = date / 1; // get total milliseconds since epoch
+			if (timeNow > fertiliserStartTime + 10000){
+				unlockedFertiliser = false;
+				fertiliser = 0;
+			}
+		
+		}, );
+		
+		function useFertiliser (){
+			if (unlockedFertiliser){
+				useFertiliser = setInterval(() => {
+				  updateScreen();
+				}, 1000);
+			} else{
+				if (money >= 500 && fertiliser == 0) {
+					money = money - 500;
+					fertiliser = 1;
+					unlockedFertiliser = true;
+					updateScreen ();
+					date = new Date( ); // get date
+					fertiliserStartTime = date / 1; // get total milliseconds since epoch 
+				}8
+			}
+		}
+			
+		function useCompost () {
+			if (unlockedCompost){
+				if (money >=200){
+					money = money - 200;
+					compost_level = compost_level + 1;
+					}
+					updateScreen();
+			}else {
+				if (money >= 200) {
+				money = money - 200;
+				compost = compost + 1
+				compost_level = compost_level + 1;
+				unlockedCompost = true;
+				updateScreen();
+				}
+			}
+		}
+		
+		const interval = setInterval(function() {
+			if (unlockedFertiliser){
+				if (unlockedAutoWheat){
+					wheat = wheat + wheat_harvesting*5 + 0.25*compost;
+					}else {
+						wheat = wheat + wheat_harvesting*5
+					}
+				if (unlockedAutoLettuce){
+					lettuce = lettuce + lettuce_harvesting*5 + 0.25*compost;
+					}else {
+						lettuce = lettuce + lettuce_harvesting*5;
+					}
+				if (unlockedAutoTomato){
+					tomatoes = tomatoes + tomato_harvesting*5 + 0.25*compost;
+					}else {
+						tomatoes = tomatoes + tomato_harvesting*5;
+					}
+				if (unlockedAutoCarrot){
+					carrots = carrots + carrot_harvesting*5 + 0.25*compost;
+					}else {
+						carrots = carrots + carrot_harvesting*5;
+					}
+				if (unlockedPotatoes){
+					potatoes = potatoes + potato_harvesting*5 + 0.25*compost;
+					}else {
+						potatoes = potatoes + potato_harvesting*5;
+					}
+			} else{
+				if (unlockedAutoWheat){
+					wheat = wheat + wheat_harvesting*0.1 + 0.25*compost;
+					}else {
+						wheat = wheat + wheat_harvesting*0.1
+					}
+				if (unlockedAutoLettuce){
+					lettuce = lettuce + lettuce_harvesting*0.2 + 0.25*compost;
+					}else {
+						lettuce = lettuce + lettuce_harvesting*0.2;
+					}
+				if (unlockedAutoTomato){
+					tomatoes = tomatoes + tomato_harvesting*0.3 + 0.25*compost;
+					}else {
+						tomatoes = tomatoes + tomato_harvesting*0.3;
+					}
+				if (unlockedAutoCarrot){
+					carrots = carrots + carrot_harvesting*0.4 + 0.25*compost;
+					}else {
+						carrots = carrots + carrot_harvesting*0.4;
+					}
+				if (unlockedPotatoes){
+					potatoes = potatoes + potato_harvesting*0.5 + 0.25*compost;
+					}else {
+						potatoes = potatoes + potato_harvesting*0.5;
+					}
+				}
+			w = wheat.toFixed(2);
+			l = lettuce.toFixed(2);
+			t = tomatoes.toFixed(2);
+			c = carrots.toFixed(2);
+			p = potatoes.toFixed(2);
+			m = money.toFixed(2);
+			updateScreen ();
+		}, 750);
+		
+		function updatePicture (){
+			if (unlockedLettuce && !unlockedTomatoes && !unlockedCarrots && !unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_l.png";
+			}
+			if (unlockedLettuce && unlockedTomatoes && !unlockedCarrots && !unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_l_t.png";
+			}
+			if (unlockedLettuce && !unlockedTomatoes && unlockedCarrots && !unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_l_c.png";
+			}
+			if (unlockedLettuce && !unlockedTomatoes && !unlockedCarrots && unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_l_p.png";
+			}
+			if (unlockedLettuce && unlockedTomatoes && unlockedCarrots && !unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_l_t_c.png";
+			}
+			if (unlockedLettuce && unlockedTomatoes && !unlockedCarrots && unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_l_t_p.png";
+			}
+			if (unlockedLettuce && !unlockedTomatoes && unlockedCarrots && unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_l_c_p.png";
+			}
+			if (unlockedLettuce && unlockedTomatoes && unlockedCarrots && unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_l_t_c_p.png";
+			}
+			if (!unlockedLettuce && unlockedTomatoes && !unlockedCarrots && !unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_t.png";
+			}
+			if (!unlockedLettuce && unlockedTomatoes && unlockedCarrots && !unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_t_c.png";
+			}
+			if (!unlockedLettuce && unlockedTomatoes && !unlockedCarrots && unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_t_p.png";
+			}
+			if (!unlockedLettuce && unlockedTomatoes && unlockedCarrots && unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_t_c_p.png";
+			}
+			if (!unlockedLettuce && !unlockedTomatoes && unlockedCarrots && !unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_c.png";
+			}
+			if (!unlockedLettuce && !unlockedTomatoes && unlockedCarrots && unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_c_p.png";
+			}
+			if (!unlockedLettuce && !unlockedTomatoes && !unlockedCarrots && unlockedPotatoes){
+				document.getElementById("farming_image").src = "pictures/farm/w_p.png";
+			}
+		}
+		
+		function updateScreen() {
+			document.getElementById("wheat_count").innerHTML = "You have " + w + " wheat.";
+			document.getElementById("lettuce_count").innerHTML = "You have " + l + " lettuce.";
+			document.getElementById("tomato_count").innerHTML = "You have " + t + " tomatoes.";
+			document.getElementById("carrot_count").innerHTML = "You have " + c + " carrots.";
+			document.getElementById("potato_count").innerHTML = "You have " + p + " potatoes.";
+			document.getElementById("current_money").innerHTML = "$" + m + " ";
+			if (unlockedLettuce == false){
+				document.getElementById("produce_lettuce").innerHTML = "Unlock lettuce: $1000";
+				} else{
+					document.getElementById("produce_lettuce").innerHTML = "Produce lettuce";
+				}
+			if (unlockedTomatoes == false){
+				document.getElementById("produce_tomatoes").innerHTML = "Unlock tomatoes: $2500";
+				} else{
+					document.getElementById("produce_tomatoes").innerHTML = "Produce tomatoes";
+				}
+			if (unlockedCarrots == false){
+				document.getElementById("produce_carrots").innerHTML = "Unlock carrots: $4500";
+				} else{
+					document.getElementById("produce_carrots").innerHTML = "Produce carrots";
+				}
+			if (unlockedPotatoes == false){
+				document.getElementById("produce_potatoes").innerHTML = "Unlock potatoes: $7500";
+				} else{
+					document.getElementById("produce_potatoes").innerHTML = "Produce potatoes";
+				}
+			if (unlockedAutoWheat == false){
+				document.getElementById("auto_wheat").innerHTML = "Unlock wheat harvester: $500";
+				} else{
+					document.getElementById("auto_wheat").innerHTML = "Wheat harvester level: " + wheat_harvesting + "";
+				}
+			if (unlockedAutoLettuce == false){
+				document.getElementById("auto_lettuce").innerHTML = "Unlock lettuce harvester: $2000";
+				} else{
+					document.getElementById("auto_lettuce").innerHTML = "Lettuce harvester level: " + lettuce_harvesting + "";
+				}
+			if (unlockedAutoTomato == false){
+				document.getElementById("auto_tomato").innerHTML = "Unlock tomato harvester: $4000";
+				} else{
+					document.getElementById("auto_tomato").innerHTML = "Tomato harvester level: " + tomato_harvesting + "";
+				}
+			if (unlockedAutoCarrot == false){
+				document.getElementById("auto_carrot").innerHTML = "Unlock carrot harvester: $6500";
+				} else{
+					document.getElementById("auto_carrot").innerHTML = "Carrot harvester level: " + carrot_harvesting + "";
+				}
+			if (unlockedAutoPotato == false){
+				document.getElementById("auto_potato").innerHTML = "Unlock potato harvester: $9500";
+				} else{
+					document.getElementById("auto_potato").innerHTML = "Potato harvester level: " + potato_harvesting + "";
+				}
+			if (unlockedFertiliser == false){
+				document.getElementById("use_fertiliser").innerHTML = "Use fertiliser: $500";
+				} else{
+					document.getElementById("use_fertiliser").innerHTML = "Using fertiliser: 10 second countdown"
+				}
+			if (unlockedCompost == false){
+				document.getElementById("compost_lvl").innerHTML = "Compost level: 0";
+				} else {
+					document.getElementById("compost_lvl").innerHTML = "Compost level: " + compost_level + "";
+				}
+			
+			updatePicture();
+		}
+			
+	
+	</script>
+</html>

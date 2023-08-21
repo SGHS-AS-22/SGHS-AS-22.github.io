@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander&family=Noto+Sans:wght@300&display=swap');
+
+
+#picture {
+	height: 30%;
+	text-align: center;
+}
+
+#farming_image {
+	height: 100%;
+}
+
+#text_body {
+	height: 70%;
+}
+
+#current_stats_left {
+	float: left;
+	width:25%;
+	height: 100%;
+}
+
+#crop_icons {
+	float: left;
+	width: 5%;
+	height: 100%;
+}
+
+#powerup_icons {
+	float: left;
+	width: 5%;
+	height: 100%;
+}
+
+	#wheat_icon {
+		height: 8%;
+	}
+
+	#lettuce_icon {
+		height: 8%;
+	}
+
+	#tomato_icon {
+		height: 8%;
+	}
+
+	#carrot_icon {
+		height: 8%;
+	}
+
+	#potato_icon {
+		height: 8%;
+	}
+
+	#fertiliser_icon {
+		height: 8%;
+	}
+
+	#compost_icon {
+		height: 8%;
+	}
+
+#upgrades_middle {
+	float: left;
+	width:25%;
+	height: 100%;
+}
+
+#powerups_right {
+	float: left;
+	width: 25%;
+	height: 100%
+}
+
+#gap_one {
+	float: left;
+	width: 7.5%;
+	height: 100%;
+}
+
+#gap_two {
+	float: left;
+	width: 7.5%;
+	height: 100%;
+}
+
+
+h1 {
+	font-size: 45px;
+	font-family: Grandstander;
+	color: #8c3f22;
+}
+
+h2 {
+	font-size: 25px;
+	font-family: Noto Sans;
+	color: #b66749;
+}
+
+h3 {
+	font-size: 18px;
+	font-family: Noto Sans;
+	font-weight: 650;
+	color: #d1ae8e;
+}
+
+p {
+	font-size: 18px;
+	font-family: Noto Sans;
+	font-weight: 650;
+	color: #d1ae8e;
+}
