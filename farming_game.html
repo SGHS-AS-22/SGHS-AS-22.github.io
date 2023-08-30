@@ -67,15 +67,15 @@
 		<div id="upgrades_middle">
 				<h1> UPGRADES </h1>
 				<h2 id="produce_wheat"> Produce wheat </h2>
-				<h3 id="auto_wheat"> Unlock wheat harvester: $500 </h3>
-				<h2 id ="produce_lettuce"> Unlock lettuce: $1000 </h2>
-				<h3 id="auto_lettuce"> Unlock lettuce harvester: $2000 </h3>
-				<h2 id ="produce_tomatoes"> Unlock tomatoes: $2500 </h2>
-				<h3 id="auto_tomato"> Unlock tomato harvester: $4000 </h3>
-				<h2 id ="produce_carrots"> Unlock carrots: $4500 </h2>
-				<h3 id="auto_carrot"> Unlock carrot harvester: $6500 </h3>
-				<h2 id ="produce_potatoes"> Unlock potatoes: $7000 </h2>
-				<h3 id="auto_potato"> Unlock potato harvester: $9500 </h3>
+				<h3 id="auto_wheat"> Unlock wheat harvester: $250 </h3>
+				<h2 id ="produce_lettuce"> Unlock lettuce: $500 </h2>
+				<h3 id="auto_lettuce"> Unlock lettuce harvester: $875 </h3>
+				<h2 id ="produce_tomatoes"> Unlock tomatoes: $1250 </h2>
+				<h3 id="auto_tomato"> Unlock tomato harvester: $1750 </h3>
+				<h2 id ="produce_carrots"> Unlock carrots: $2250 </h2>
+				<h3 id="auto_carrot"> Unlock carrot harvester: $2875 </h3>
+				<h2 id ="produce_potatoes"> Unlock potatoes: $3500 </h2>
+				<h3 id="auto_potato"> Unlock potato harvester: $4250 </h3>
 		</div>
 			
 		<div id="gap_two">
@@ -192,8 +192,8 @@
 				lettuce = lettuce + 1 + 2.5*fertiliser + 1.5*compost;
 				updateScreen();
 			} else{
-				if (money >= 1000){
-					money = money - 1000;
+				if (money >= 500){
+					money = money - 500;
 					unlockedLettuce = true;
 					updateScreen();
 				}
@@ -205,8 +205,8 @@
 				tomatoes = tomatoes + 1 + 3*fertiliser + 1.5*compost;
 				updateScreen();
 			} else{
-				if (money >= 2500){
-					money = money - 2500;
+				if (money >= 1250){
+					money = money - 1250;
 					unlockedTomatoes = true;
 					updateScreen();
 				}
@@ -218,8 +218,8 @@
 				carrots = carrots + 1 + 3.5*fertiliser + 1.5*compost;
 				updateScreen();
 			} else{
-				if (money >= 4500){
-					money = money - 4500;
+				if (money >= 2250){
+					money = money - 2250;
 					unlockedCarrots = true;
 					updateScreen();
 				}
@@ -231,8 +231,8 @@
 				potatoes = potatoes + 1 + 4*fertiliser + 1.5*compost;
 				updateScreen();
 			} else{
-				if (money >= 7000){
-					money = money - 7000;
+				if (money >= 3500){
+					money = money - 3500;
 					unlockedPotatoes = true;
 					updateScreen();
 				}
@@ -253,14 +253,14 @@
 		
 		function automateWheat (){
 			if (unlockedAutoWheat){
-				if (money >= 500) {
-					money = money - 500;
+				if (money >= 250) {
+					money = money - 250;
 					wheat_harvesting = wheat_harvesting + 1;
 					}
 					updateScreen();
 			} else{
-				if (money >= 500) {
-				money = money - 500;
+				if (money >= 250) {
+				money = money - 250;
 				unlockedAutoWheat = true;
 				wheat_harvesting = wheat_harvesting + 1
 				updateScreen ();
@@ -270,14 +270,14 @@
 		
 		function automateLettuce (){
 			if (unlockedAutoLettuce){
-				if (money >= 2000) {
-					money = money - 2000;
+				if (money >= 875) {
+					money = money - 875;
 					lettuce_harvesting = lettuce_harvesting + 1;
 					}
 					updateScreen();
 			} else{
-				if (money >= 2000) {
-				money = money - 2000;
+				if (money >= 875) {
+				money = money - 875;
 				unlockedAutoLettuce = true;
 				lettuce_harvesting = lettuce_harvesting + 1
 				updateScreen ();
@@ -287,14 +287,14 @@
 		
 		function automateTomato (){
 			if (unlockedAutoTomato){
-				if (money >= 4000) {
-					money = money - 4000;
+				if (money >= 1750) {
+					money = money - 1750;
 					tomato_harvesting = tomato_harvesting + 1;
 					}
 					updateScreen();
 			} else{
-				if (money >= 4000) {
-				money = money - 4000;
+				if (money >= 1750) {
+				money = money - 1750;
 				unlockedAutoTomato = true;
 				tomato_harvesting = tomato_harvesting + 1
 				updateScreen ();
@@ -304,14 +304,14 @@
 		
 		function automateCarrot (){
 			if (unlockedAutoCarrot){
-				if (money >= 6500) {
-					money = money - 6500;
+				if (money >= 2875) {
+					money = money - 2875;
 					carrot_harvesting = carrot_harvesting + 1;
 					}
 					updateScreen();
 			} else{
-				if (money >= 6500) {
-				money = money - 6500;
+				if (money >= 2875) {
+				money = money - 2875;
 				unlockedAutoCarrot = true;
 				carrot_harvesting = carrot_harvesting + 1;
 				updateScreen ();
@@ -321,14 +321,14 @@
 		
 		function automatePotato (){
 			if (unlockedAutoPotato){
-				if (money >= 9500) {
-					money = money - 9500;
+				if (money >= 4250) {
+					money = money - 4250;
 					potato_harvesting = potato_harvesting + 1;
 					}
 					updateScreen();
 			} else{
-				if (money >= 9500) {
-				money = money - 9500;
+				if (money >= 4250) {
+				money = money - 4250;
 				unlockedAutoPotato = true;
 				potato_harvesting = potato_harvesting + 1;
 				updateScreen ();
@@ -500,47 +500,47 @@
 			document.getElementById("potato_count").innerHTML = "You have " + p + " potatoes.";
 			document.getElementById("current_money").innerHTML = "$" + m + " ";
 			if (unlockedLettuce == false){
-				document.getElementById("produce_lettuce").innerHTML = "Unlock lettuce: $1000";
+				document.getElementById("produce_lettuce").innerHTML = "Unlock lettuce: $500";
 				} else{
 					document.getElementById("produce_lettuce").innerHTML = "Produce lettuce";
 				}
 			if (unlockedTomatoes == false){
-				document.getElementById("produce_tomatoes").innerHTML = "Unlock tomatoes: $2500";
+				document.getElementById("produce_tomatoes").innerHTML = "Unlock tomatoes: $1250";
 				} else{
 					document.getElementById("produce_tomatoes").innerHTML = "Produce tomatoes";
 				}
 			if (unlockedCarrots == false){
-				document.getElementById("produce_carrots").innerHTML = "Unlock carrots: $4500";
+				document.getElementById("produce_carrots").innerHTML = "Unlock carrots: $2250";
 				} else{
 					document.getElementById("produce_carrots").innerHTML = "Produce carrots";
 				}
 			if (unlockedPotatoes == false){
-				document.getElementById("produce_potatoes").innerHTML = "Unlock potatoes: $7500";
+				document.getElementById("produce_potatoes").innerHTML = "Unlock potatoes: $3500";
 				} else{
 					document.getElementById("produce_potatoes").innerHTML = "Produce potatoes";
 				}
 			if (unlockedAutoWheat == false){
-				document.getElementById("auto_wheat").innerHTML = "Unlock wheat harvester: $500";
+				document.getElementById("auto_wheat").innerHTML = "Unlock wheat harvester: $250";
 				} else{
 					document.getElementById("auto_wheat").innerHTML = "Wheat harvester level: " + wheat_harvesting + "";
 				}
 			if (unlockedAutoLettuce == false){
-				document.getElementById("auto_lettuce").innerHTML = "Unlock lettuce harvester: $2000";
+				document.getElementById("auto_lettuce").innerHTML = "Unlock lettuce harvester: $875";
 				} else{
 					document.getElementById("auto_lettuce").innerHTML = "Lettuce harvester level: " + lettuce_harvesting + "";
 				}
 			if (unlockedAutoTomato == false){
-				document.getElementById("auto_tomato").innerHTML = "Unlock tomato harvester: $4000";
+				document.getElementById("auto_tomato").innerHTML = "Unlock tomato harvester: $1750";
 				} else{
 					document.getElementById("auto_tomato").innerHTML = "Tomato harvester level: " + tomato_harvesting + "";
 				}
 			if (unlockedAutoCarrot == false){
-				document.getElementById("auto_carrot").innerHTML = "Unlock carrot harvester: $6500";
+				document.getElementById("auto_carrot").innerHTML = "Unlock carrot harvester: $2875";
 				} else{
 					document.getElementById("auto_carrot").innerHTML = "Carrot harvester level: " + carrot_harvesting + "";
 				}
 			if (unlockedAutoPotato == false){
-				document.getElementById("auto_potato").innerHTML = "Unlock potato harvester: $9500";
+				document.getElementById("auto_potato").innerHTML = "Unlock potato harvester: $4250";
 				} else{
 					document.getElementById("auto_potato").innerHTML = "Potato harvester level: " + potato_harvesting + "";
 				}
