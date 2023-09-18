@@ -106,6 +106,11 @@
 				<h3> Slowly start producing more crops per second/click. </h3>
 				<h3 id="compost_lvl"> Compost level: 0 </h3>
 		</div>
+		
+		<audio id="sound"> 
+			<source src="unlock_sfx.mp3" /> 
+		</audio> 
+		
 	</div>
 		
 	
@@ -160,6 +165,9 @@
 		const fer_box = document.getElementById('use_fertiliser');
 		const com_box = document.getElementById('use_compost');
 		
+		const mySound = document.getElementById("sound");
+		
+		//const unlockedFunction = document.
 		
 		let m = Math.round(money);
 		
@@ -260,11 +268,18 @@
 			} else{
 				if (money >= 500){
 					money = money - 500;
+					mySound.play();
 					unlockedLettuce = true;
 					updateScreen();
 				}
 			}
 		}
+		
+		//if (unlockedLettuce == false){
+		//	l_box.addEventListener("click", function(){ mySound.play();});
+		//	unlockedLettuce = true;
+		//}
+		
 		
 		function pushTomato (){
 			if (unlockedTomatoes){
@@ -273,6 +288,7 @@
 			} else{
 				if (money >= 1250){
 					money = money - 1250;
+					mySound.play();
 					unlockedTomatoes = true;
 					updateScreen();
 				}
@@ -286,6 +302,7 @@
 			} else{
 				if (money >= 2250){
 					money = money - 2250;
+					mySound.play();
 					unlockedCarrots = true;
 					updateScreen();
 				}
@@ -299,6 +316,7 @@
 			} else{
 				if (money >= 3500){
 					money = money - 3500;
+					mySound.play();
 					unlockedPotatoes = true;
 					updateScreen();
 				}
@@ -327,6 +345,7 @@
 			} else{
 				if (money >= 250) {
 				money = money - 250;
+				mySound.play();
 				unlockedAutoWheat = true;
 				wheat_harvesting = wheat_harvesting + 1
 				updateScreen ();
@@ -344,6 +363,7 @@
 			} else{
 				if (money >= 875) {
 				money = money - 875;
+				mySound.play();
 				unlockedAutoLettuce = true;
 				lettuce_harvesting = lettuce_harvesting + 1
 				updateScreen ();
@@ -361,6 +381,7 @@
 			} else{
 				if (money >= 1750) {
 				money = money - 1750;
+				mySound.play();
 				unlockedAutoTomato = true;
 				tomato_harvesting = tomato_harvesting + 1
 				updateScreen ();
@@ -378,6 +399,7 @@
 			} else{
 				if (money >= 2875) {
 				money = money - 2875;
+				mySound.play();
 				unlockedAutoCarrot = true;
 				carrot_harvesting = carrot_harvesting + 1;
 				updateScreen ();
@@ -395,6 +417,7 @@
 			} else{
 				if (money >= 4250) {
 				money = money - 4250;
+				mySound.play();
 				unlockedAutoPotato = true;
 				potato_harvesting = potato_harvesting + 1;
 				updateScreen ();
@@ -421,6 +444,7 @@
 				if (money >= 500 && fertiliser == 0) {
 					money = money - 500;
 					fertiliser = 1;
+					mySound.play();
 					unlockedFertiliser = true;
 					updateScreen ();
 					date = new Date( ); // get date
@@ -439,6 +463,7 @@
 			}else {
 				if (money >= 200) {
 				money = money - 200;
+				mySound.play();
 				compost = compost + 1
 				compost_level = compost_level + 1;
 				unlockedCompost = true;
