@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title> Farming Idle Game </title>
-		<link rel="icon" href=""> 
+		<link rel="icon" href="pictures/icons/wheat_icon.png"> 
 		<link rel="stylesheet" type="text/css" href="farming_css.css">
 		
 		<meta charset="UTF-8">
@@ -145,6 +145,22 @@
 		var carrot_harvesting = 0;
 		var potato_harvesting = 0;
 		
+		const w_box = document.getElementById('produce_wheat');
+		const l_box = document.getElementById('produce_lettuce');
+		const t_box = document.getElementById('produce_tomatoes');
+		const c_box = document.getElementById('produce_carrots');
+		const p_box = document.getElementById('produce_potatoes');
+		
+		const aw_box = document.getElementById('auto_wheat');
+		const al_box = document.getElementById('auto_lettuce');
+		const at_box = document.getElementById('auto_tomato');
+		const ac_box = document.getElementById('auto_carrot');
+		const ap_box = document.getElementById('auto_potato');
+		
+		const fer_box = document.getElementById('use_fertiliser');
+		const com_box = document.getElementById('use_compost');
+		
+		
 		let m = Math.round(money);
 		
 		// Event Listeners for Wheat Producing
@@ -180,6 +196,56 @@
 		
 		document.getElementById("auto_potato").addEventListener("click", automatePotato);
 		
+		//Event Listeners for Mouse Hovering: Crops
+		w_box.addEventListener('mouseover', function handleMouseOver() {
+			w_box.style.color = '#75d16d';
+		});
+		
+		l_box.addEventListener('mouseover', function handleMouseOver() {
+			l_box.style.color = '#75d16d';
+		});
+		
+		t_box.addEventListener('mouseover', function handleMouseOver() {
+			t_box.style.color = '#75d16d';
+		});
+		
+		c_box.addEventListener('mouseover', function handleMouseOver() {
+			c_box.style.color = '#75d16d';
+		});
+		
+		p_box.addEventListener('mouseover', function handleMouseOver() {
+			p_box.style.color = '#75d16d';
+		});
+		
+		//Event Listeners for Mouse Hovering: Harvesters
+		aw_box.addEventListener('mouseover', function handleMouseOver() {
+			aw_box.style.color = '#75d16d';
+		});
+		
+		al_box.addEventListener('mouseover', function handleMouseOver() {
+			al_box.style.color = '#75d16d';
+		});
+		
+		at_box.addEventListener('mouseover', function handleMouseOver() {
+			at_box.style.color = '#75d16d';
+		});
+		
+		ac_box.addEventListener('mouseover', function handleMouseOver() {
+			ac_box.style.color = '#75d16d';
+		});
+		
+		ap_box.addEventListener('mouseover', function handleMouseOver() {
+			ap_box.style.color = '#75d16d';
+		});
+		
+		//Event Listeners for Mouse Hovering: Power-ups
+		fer_box.addEventListener('mouseover', function handleMouseOver() {
+			fer_box.style.color = '#75d16d';
+		});
+		
+		com_box.addEventListener('mouseover', function handleMouseOver() {
+			com_box.style.color = '#75d16d';
+		});
 		
 		
 		function pushWheat (){
@@ -499,50 +565,70 @@
 			document.getElementById("carrot_count").innerHTML = "You have " + c + " carrots.";
 			document.getElementById("potato_count").innerHTML = "You have " + p + " potatoes.";
 			document.getElementById("current_money").innerHTML = "$" + m + " ";
+			
+			document.getElementById("produce_wheat").style.color = "#a14612";
 			if (unlockedLettuce == false){
 				document.getElementById("produce_lettuce").innerHTML = "Unlock lettuce: $500";
+				document.getElementById("produce_lettuce").style.color = "#a39186";
 				} else{
 					document.getElementById("produce_lettuce").innerHTML = "Produce lettuce";
+					document.getElementById("produce_lettuce").style.color = "#a14612";
 				}
 			if (unlockedTomatoes == false){
 				document.getElementById("produce_tomatoes").innerHTML = "Unlock tomatoes: $1250";
+				document.getElementById("produce_tomatoes").style.color = "#a39186";
 				} else{
 					document.getElementById("produce_tomatoes").innerHTML = "Produce tomatoes";
+					document.getElementById("produce_tomatoes").style.color = "#a14612";
 				}
 			if (unlockedCarrots == false){
 				document.getElementById("produce_carrots").innerHTML = "Unlock carrots: $2250";
+				document.getElementById("produce_carrots").style.color = "#a39186";
 				} else{
 					document.getElementById("produce_carrots").innerHTML = "Produce carrots";
+					document.getElementById("produce_carrots").style.color = "#a14612";
 				}
 			if (unlockedPotatoes == false){
 				document.getElementById("produce_potatoes").innerHTML = "Unlock potatoes: $3500";
+				document.getElementById("produce_potatoes").style.color = "#a39186";
 				} else{
 					document.getElementById("produce_potatoes").innerHTML = "Produce potatoes";
+					document.getElementById("produce_potatoes").style.color = "#a14612";
 				}
 			if (unlockedAutoWheat == false){
 				document.getElementById("auto_wheat").innerHTML = "Unlock wheat harvester: $250";
+				document.getElementById("auto_wheat").style.color = "#c7b9b1";
 				} else{
 					document.getElementById("auto_wheat").innerHTML = "Wheat harvester level: " + wheat_harvesting + "";
+					document.getElementById("auto_wheat").style.color = "#c27246";
 				}
 			if (unlockedAutoLettuce == false){
 				document.getElementById("auto_lettuce").innerHTML = "Unlock lettuce harvester: $875";
+				document.getElementById("auto_lettuce").style.color = "#c7b9b1";
 				} else{
 					document.getElementById("auto_lettuce").innerHTML = "Lettuce harvester level: " + lettuce_harvesting + "";
+					document.getElementById("auto_lettuce").style.color = "#c27246";
 				}
 			if (unlockedAutoTomato == false){
 				document.getElementById("auto_tomato").innerHTML = "Unlock tomato harvester: $1750";
+				document.getElementById("auto_tomato").style.color = "#c7b9b1";
 				} else{
 					document.getElementById("auto_tomato").innerHTML = "Tomato harvester level: " + tomato_harvesting + "";
+					document.getElementById("auto_tomato").style.color = "#c27246";
 				}
 			if (unlockedAutoCarrot == false){
 				document.getElementById("auto_carrot").innerHTML = "Unlock carrot harvester: $2875";
+				document.getElementById("auto_carrot").style.color = "#c7b9b1";
 				} else{
 					document.getElementById("auto_carrot").innerHTML = "Carrot harvester level: " + carrot_harvesting + "";
+					document.getElementById("auto_carrot").style.color = "#c27246";
 				}
 			if (unlockedAutoPotato == false){
 				document.getElementById("auto_potato").innerHTML = "Unlock potato harvester: $4250";
+				document.getElementById("auto_potato").style.color = "#c7b9b1";
 				} else{
 					document.getElementById("auto_potato").innerHTML = "Potato harvester level: " + potato_harvesting + "";
+					document.getElementById("auto_potato").style.color = "#c27246";
 				}
 			if (unlockedFertiliser == false){
 				document.getElementById("use_fertiliser").innerHTML = "Use fertiliser: $500";
@@ -554,6 +640,8 @@
 				} else {
 					document.getElementById("compost_lvl").innerHTML = "Compost level: " + compost_level + "";
 				}
+			document.getElementById("use_fertiliser").style.color = "#a14612";
+			document.getElementById("use_compost").style.color = "#a14612";
 			
 			updatePicture();
 		}

@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grandstander&family=Noto+Sans:wght@300&display=swap');
 
-
 #picture {
 	height: 30%;
 	text-align: center;
+	background-color: #fff0e0;
 }
 
 #farming_image {
@@ -13,6 +13,7 @@
 
 #text_body {
 	height: 70%;
+	background-color: #fff0e0;
 }
 
 #current_stats_left {
@@ -89,25 +90,25 @@
 h1 {
 	font-size: 45px;
 	font-family: Grandstander;
-	color: #8c3f22;
+	color: #752b00;
 }
 
 h2 {
 	font-size: 25px;
 	font-family: Noto Sans;
-	color: #b66749;
+	color: #a14612;
 }
 
 h3 {
 	font-size: 18px;
 	font-family: Noto Sans;
 	font-weight: 650;
-	color: #d1ae8e;
+	color: #c27246;
 }
 
 p {
 	font-size: 18px;
 	font-family: Noto Sans;
 	font-weight: 650;
-	color: #d1ae8e;
+	color: #c27246;
 }
