@@ -171,6 +171,8 @@
 		const fer_box = document.getElementById('use_fertiliser');
 		const com_box = document.getElementById('use_compost');
 		
+		const sell_box = document.getElementById('sell_crops');
+		
 		const mySound = document.getElementById("sound");
 		
 		//const unlockedFunction = document.
@@ -259,6 +261,11 @@
 		
 		com_box.addEventListener('mouseover', function handleMouseOver() {
 			com_box.style.color = '#75d16d';
+		});
+		
+		//Event Listener for Sell Crops for Money
+		sell_box.addEventListener('mouseover', function handleMouseOver() {
+			sell_box.style.color = '#75d16d';
 		});
 		
 		
@@ -688,6 +695,7 @@
 				}
 			document.getElementById("use_fertiliser").style.color = "#a14612";
 			document.getElementById("use_compost").style.color = "#a14612";
+			document.getElementById("sell_crops").style.color = "#a14612";
 			
 			updatePicture();
 		}
