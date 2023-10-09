@@ -86,6 +86,17 @@
 	height: 100%;
 }
 
+#my_progress {
+  width: 90%;
+  background-color: #ffffff;
+}
+
+#fertiliser_bar {
+  width: 1%;
+  height: 30px;
+  background-color: #dbc1a0;
+}
+
 
 h1 {
 	font-size: 45px;

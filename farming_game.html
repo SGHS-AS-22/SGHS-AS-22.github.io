@@ -95,6 +95,7 @@
 			<br>
 			<br>
 			<br>
+			<br>
 			<img id="compost_icon" src="pictures/icons/compost_icon.png">
 		</div>
 			
@@ -102,6 +103,10 @@
 				<h1> POWER UPS </h1>
 				<h2 id="use_fertiliser"> Use fertiliser: $500 </h2>
 				<h3> Give yourself a mega boost in crop production for a limited amount of time. </h3>
+				<div id="my_progress">
+					<div id="fertiliser_bar">
+					</div>
+				</div>
 				<h2 id="use_compost"> Use compost: $200 </h2>
 				<h3> Slowly start producing more crops per second/click. </h3>
 				<h3 id="compost_lvl"> Compost level: 0 </h3>
@@ -138,6 +143,7 @@
 		var unlockedFertiliser = false;
 		var unlockedCompost = false;
 		var fertiliserStartTime = 0;
+		var i = 0;
 		
 		var money = 0;
 		var fertiliser = 0;
@@ -435,7 +441,7 @@
 		
 		}, );
 		
-		function useFertiliser (){
+		function useFertiliser(){
 			if (unlockedFertiliser){
 				useFertiliser = setInterval(() => {
 				  updateScreen();
@@ -449,9 +455,24 @@
 					updateScreen ();
 					date = new Date( ); // get date
 					fertiliserStartTime = date / 1; // get total milliseconds since epoch 
-				}8
+					if (i == 0) {
+						i = 1;
+						var elem = document.getElementById("fertiliser_bar");
+						var width = 1;
+						var id = setInterval(frame, 100);
+						function frame() {
+						  if (width >= 100) {
+							clearInterval(id);
+							i = 0;
+						  } else {
+							width++;
+							elem.style.width = width + "%";
+						  }
+						}
+					  }
+					}
+				}
 			}
-		}
 			
 		function useCompost () {
 			if (unlockedCompost){
@@ -658,7 +679,7 @@
 			if (unlockedFertiliser == false){
 				document.getElementById("use_fertiliser").innerHTML = "Use fertiliser: $500";
 				} else{
-					document.getElementById("use_fertiliser").innerHTML = "Using fertiliser: 10 second countdown"
+					document.getElementById("use_fertiliser").innerHTML = "Use fertiliser: $500"
 				}
 			if (unlockedCompost == false){
 				document.getElementById("compost_lvl").innerHTML = "Compost level: 0";
