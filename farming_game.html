@@ -263,11 +263,6 @@
 			com_box.style.color = '#75d16d';
 		});
 		
-		//Event Listener for Sell Crops for Money
-		sell_box.addEventListener('mouseover', function handleMouseOver() {
-			sell_box.style.color = '#75d16d';
-		});
-		
 		
 		function pushWheat (){
 			wheat = wheat + 1 + 2*fertiliser + 1.5*compost;
@@ -287,11 +282,6 @@
 				}
 			}
 		}
-		
-		//if (unlockedLettuce == false){
-		//	l_box.addEventListener("click", function(){ mySound.play();});
-		//	unlockedLettuce = true;
-		//}
 		
 		
 		function pushTomato (){
@@ -695,7 +685,17 @@
 				}
 			document.getElementById("use_fertiliser").style.color = "#a14612";
 			document.getElementById("use_compost").style.color = "#a14612";
-			document.getElementById("sell_crops").style.color = "#a14612";
+			if (wheat > 0 || lettuce > 0 || tomatoes > 0 || carrots > 0 || potatoes > 0){
+				document.getElementById("sell_crops").style.color = "#a14612";
+				sell_box.addEventListener('mouseover', function handleMouseOver() {
+					sell_box.style.color = '#75d16d';
+				});
+				} else {
+				document.getElementById("sell_crops").style.color = "#fff0e0";
+				sell_box.addEventListener('mouseover', function handleMouseOver() {
+					sell_box.style.color = '#fff0e0';
+				});
+				}
 			
 			updatePicture();
 		}
